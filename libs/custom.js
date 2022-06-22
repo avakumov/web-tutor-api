@@ -242,7 +242,19 @@ function PostEmployee(
 function AssignCourse(code_person, course_id) {
     var docCollaborator = _get_collaborator(code_person);
     if (course_id != undefined && Trim(course_id) != '' && docCollaborator != undefined) {
-        tools.activate_course_to_person(OptInt(docCollaborator.topElem.id, 0), OptInt(_course_id, 0), _event_id);
+        tools.activate_course_to_person(OptInt(docCollaborator.TopElem.id, 0), OptInt(course_id, 0));
+        // "iEventID": docEducationPlan.TopElem.event_id.Value
+        // tools.activate_course_to_person(OptInt(docCollaborator.TopElem.id, 0), OptInt(course_id, 0), _event_id);
+        return 'Success';
+    }
+    //TODO отправлять уведомление. Из карточки курса добавить ко
+}
+
+function AssignTest(code_person, test_id){
+    // <activate_test_to_person PROPERTY="1" PARAM="oPersonID" PARAM="_test_id" PARAM="_event_id" PARAM="_person_doc" PARAM="_test_doc" PARAM="_event_doc" PARAM="_duration" PARAM="_start_learning_date" PARAM="dtLastLearningDateParam" PARAM="_group_id" PARAM="_education_plan_id" PARAM="bSkipDismissedParam" EXPR="
+    var docCollaborator = _get_collaborator(code_person);
+    if (test_id != undefined && Trim(test_id) != '' && docCollaborator != undefined) {
+        tools.activate_test_to_person(OptInt(docCollaborator.TopElem.id, 0), OptInt(test_id, 0));
         return 'Success';
     }
     //TODO отправлять уведомление. Из карточки курса добавить ко
@@ -253,6 +265,16 @@ function GetCourses() {
     var res = [];
     for (o in arr) {
         res.push({ name: o.name, code: o.code, id: o.id, status: o.status });
+    }
+    alert(EncodeJson(res));
+    return EncodeJson(res);
+}
+
+function GetTests() {
+    var arr = ArraySelectAll(XQuery('for $elem in assessments return $elem'));
+    var res = [];
+    for (o in arr) {
+        res.push({ name: o.title, code: o.code, id: o.id, status: o.status });
     }
     alert(EncodeJson(res));
     return EncodeJson(res);

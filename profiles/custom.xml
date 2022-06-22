@@ -86,11 +86,26 @@
 			<tag name="pers"/>
 		</AssignCourse>
 
+		<AssignTest desc="assign test" method="post">
+			<param name="person_code" type="string"  required="true" source="body" desc="person code"/>		
+			<param name="test_id" type="string"  required="true" source="body" desc="test id"/>		
+			<result type="text"/>
+			<lib>x-local://wtv/oapi/libs/custom.js</lib>
+			<tag name="pers"/>
+		</AssignTest>
+		
+
 		<GetOrganizations desc="get organizations" method="get">	
 			<result type="text"/>
 			<lib>x-local://wtv/oapi/libs/custom.js</lib>
 			<tag name="pers"/>
 		</GetOrganizations>
+
+		<GetTests desc="get tests" method="get">	
+			<result type="text"/>
+			<lib>x-local://wtv/oapi/libs/custom.js</lib>
+			<tag name="pers"/>
+		</GetTests>
 
 		<GetCourses desc="get courses" method="get">	
 			<result type="text"/>
