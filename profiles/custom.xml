@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+<profile>
+	<objects>
+		<object_1>
+			<access check="[CRUD flags for ones to check access]">[CRUD flags: c,r,u,d]</access>
+			<lib>[js lib url - optional, functon name will be object_1_create/delete/update/read]</lib>
+			<tag name="[tag_1 code (tag is optional)]"/>
+			........
+			<tag name="[tag_N code (tag is optional)]"/>
+			<include>[fieldslist ;]</include>
+			<exclude>[fieldslist ;]</exclude>
+		</object_1>
+		......
+		<object_N>
+			............
+		</object_N>
+	</objects>
+	<functions>
+		<function_name_1 desc="[fn description]" method="[http method]" path="[url path to fn]" flags="optional, semicolon separated: SolidBody - pass body params as whole object (do not split)">
+			<param name="[param_1 name - mandatory]" type="[param type - integer,real,bool,string]" required="[bool]" default="[corresponding to type]" source="[input source - path,query,body(default)]" desc="[param description]"/>
+			........
+			<param name="[param_N name]" ......
+			
+			<result type="[result type - json/text/void]" array="[bool - return array or single object (applicable for type 'json')]">
+				<property name="[return property name 1 (applicable result type 'json')]" type="[property type - integer,real,bool,string]" desc="[Property description]"/>
+				......
+				<property name="[return property name N]" ........
+			</result>
+			<lib function="[function name inside lib if not equals function node name]">[url to js lib - mandatory]</lib>
+			
+			<tag name="[tag_1 code (tag is optional)]"/>
+			........
+			<tag name="[tag_N code (tag is optional)]"/>
+		</function_name_1>
+		....
+		<function_name_N........>
+			.......
+		</function_name_N>
+	</functions>
+</profile>
+-->
+<profile>
+	<objects>
+	</objects>
+	<functions>
+		<PostEmployee desc="post employee" method="post">
+			<param name="code" type="string" required="true" source="body" desc="code"/>
+			<param name="lastname" type="string"  required="true" source="body" desc="lastname"/>		
+			<param name="login" type="string" required="true" source="body" desc="login"/>					
+			<param name="firstname" type="string"  source="body" desc="firstname"/>
+			<param name="middlename" type="string"  source="body" desc="middlename"/>		
+			<param name="birth_date" type="string"  source="body" desc="birth_date"/>		
+			<param name="email" type="string"  source="body" desc="email"/>		
+			<param name="position_name" type="string" source="body" desc="position_name"/>		
+			<param name="department_code" type="string"  source="body" desc="department_code"/>		
+			<param name="password" type="string"  source="body" desc="password"/>		
+			<param name="org_name" type="string"  source="body" desc="org_name"/>		
+			<param name="subdivision" type="string"  source="body" desc="subdivision"/>		
+			<result type="text"/>
+			<lib>x-local://wtv/oapi/libs/custom.js</lib>
+			<tag name="pers"/>
+		</PostEmployee>
+		<PostOrganization desc="post orgatization" method="post">
+			<param name="code" type="string"  required="true" source="body" desc="code orgatization"/>		
+			<param name="name" type="string"  required="true" source="body" desc="name organization"/>		
+			<result type="text"/>
+			<lib>x-local://wtv/oapi/libs/custom.js</lib>
+			<tag name="pers"/>
+		</PostOrganization>
+
+
+		<AttachOrgToPerson desc="post orgatization" method="post">
+			<param name="org_name" type="string"  required="true" source="body" desc="code orgatization"/>		
+			<param name="person_id" type="string"  required="true" source="body" desc="name organization"/>		
+			<result type="text"/>
+			<lib>x-local://wtv/oapi/libs/custom.js</lib>
+			<tag name="pers"/>
+		</AttachOrgToPerson>
+
+		<GetOrganizations desc="get organizations" method="get">	
+			<result type="text"/>
+			<lib>x-local://wtv/oapi/libs/custom.js</lib>
+			<tag name="pers"/>
+		</GetOrganizations>
+
+		<GetCourses desc="get courses" method="get">	
+			<result type="text"/>
+			<lib>x-local://wtv/oapi/libs/custom.js</lib>
+			<tag name="pers"/>
+		</GetCourses>
+	</functions>
+</profile>
