@@ -78,6 +78,14 @@
 			<tag name="pers"/>
 		</AttachOrgToPerson>
 
+		<AssignCourse desc="assign course" method="post">
+			<param name="person_code" type="string"  required="true" source="body" desc="person code"/>		
+			<param name="course_id" type="string"  required="true" source="body" desc="course id"/>		
+			<result type="text"/>
+			<lib>x-local://wtv/oapi/libs/custom.js</lib>
+			<tag name="pers"/>
+		</AssignCourse>
+
 		<GetOrganizations desc="get organizations" method="get">	
 			<result type="text"/>
 			<lib>x-local://wtv/oapi/libs/custom.js</lib>
